@@ -8,6 +8,8 @@ app = FastAPI()
 tmp_file_dir = "/tmp"
 Path(tmp_file_dir).mkdir(parents=True, exist_ok=True)
 openai.api_key = ""
+COHERE_API_KEY = "aojQMA01guv79g9YULby6UPpTtx2o1zDMknnpwhq"
+
 
 @app.get("/")
 async def root():
@@ -15,6 +17,7 @@ async def root():
 
 @app.post("/api/media-file")
 async def post_media_file(file: UploadFile):
+
     with open(os.path.join(tmp_file_dir, file.filename), 'wb') as disk_file:
         file_bytes = await file.read()
 
@@ -24,4 +27,13 @@ async def post_media_file(file: UploadFile):
         print(f"{tmp_file_dir}/{file.filename}")
         with open(f"{tmp_file_dir}/{file.filename}", 'rb') as audio_file:
             transcription = openai.Audio.transcribe("whisper-1", audio_file)
-        return transcription['text']
+        co = cohere.Client(API_KEY)
+        response = co.summarize(text=transcription['text'], length='medium',
+            format='paragraph',
+            model='summarize-xlarge',
+            additional_command='Seperate into Bullet Points',
+            temperature=0.3,
+        ).summary
+
+        assert response != ""
+        return response
