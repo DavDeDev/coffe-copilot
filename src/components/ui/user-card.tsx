@@ -1,5 +1,6 @@
 // Create a card, i pass áimage url, name, short_bio, and id
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import Tilt from "react-tilt";
 
 interface UserCardProps {
   id: number;

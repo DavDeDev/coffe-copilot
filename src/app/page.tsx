@@ -5,6 +5,7 @@ import { prisma } from '../lib/cockroachDB';
 import { getUser, getUsers } from '../lib/actions/users.actions';
 import { useEffect, useState } from 'react';
 import Topbar from '@/components/shared/Topbar';
+import Recorder from '@/components/recorder';
 
 interface User {
   id: number;
@@ -30,7 +31,6 @@ export default function Home() {
   return (
     <main className="">
       <Topbar />
-      {/* Create a card for each user */}
       <div className="flex flex-col items-center justify-center min-h-screen py-2">
         {users.map((user) => (
           <UserCard
@@ -42,6 +42,7 @@ export default function Home() {
           />
         ))}
       </div>
+          <Recorder />
     </main>
   );
 }

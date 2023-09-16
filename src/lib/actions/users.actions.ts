@@ -2,10 +2,10 @@
 import {prisma} from '../cockroachDB';
 
 interface User {
-  id: number;
-  name: string;
-  image_url: string;
-  short_bio: string;
+  id: number | bigint;
+  name?: string;
+  image_url?: string;
+  short_bio?: string;
 }
 
   export const getUsers = async () => {
@@ -16,7 +16,7 @@ interface User {
 export const getUser = async (id: number) => {
   const user = await prisma.users.findUnique({
     where: {
-      id: id
+      user_id: id
     }
   });
   return user;
@@ -25,8 +25,7 @@ export const getUser = async (id: number) => {
 export const createUser = async (name: string, email: string) => {
   const user = await prisma.users.create({
     data: {
-      name: name,
-      email: email
+      name: name
     }
   });
   return user;
@@ -38,8 +37,7 @@ export const updateUser = async (id: number, name: string, email: string) => {
       id: id
     },
     data: {
-      name: name,
-      email: email
+      name: name
     }
   });
   return user;

@@ -29,8 +29,8 @@ const Recorder = () => {
         noiseSuppression: true,
         echoCancellation: true,
       }}
-      //   downloadOnSavePress={true}
-      downloadFileExtension="webm"
+        downloadOnSavePress={true}
+      downloadFileExtension="mp3"
     />
   );
 };
