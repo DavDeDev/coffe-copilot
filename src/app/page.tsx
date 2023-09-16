@@ -3,5 +3,9 @@ import { connectToDB } from './lib/pg';
 
 export default function Home() {
   connectToDB();
-  return <div>CIAO</div>;
+  return (
+    <main>
+      Put Cards here inside
+    </main>
+  );
 }
