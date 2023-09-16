@@ -1,0 +1,22 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "cockroachdb"
+  url      = env("DATABASE_URL")
+}
+
+model conversations {
+  conversation_id BigInt    @id @default(autoincrement())
+  timestamp       DateTime? @default(now()) @db.Timestamp(6)
+  participants    BigInt[]
+  transcription   String?
+}
+
+model users {
+  user_id   BigInt  @id @default(autoincrement())
+  name      String? @db.String(100)
+  image_url String? @db.String(255)
+  short_bio String?
+}
