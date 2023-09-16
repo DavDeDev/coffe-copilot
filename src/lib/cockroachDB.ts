@@ -1,25 +1,8 @@
-const { Client } = require('pg');
+import { PrismaClient } from '@prisma/client';
 
-const client = new Client(process.env.DATABASE_URL);
+export const prisma = new PrismaClient();
 
-let isConnected = false;
-
-export const connectToDB = async () => {
-  console.log("Starting connection to DB");
-  if (!process.env.DATABASE_URL) {
-    throw new Error('DATABASE_URL is not set');
-  }
-  if (isConnected) {
-    return console.log('already connected');
-  }
-  await client.connect();
-  isConnected = true;
-  try {
-    const results = await client.query('SELECT * FROM users');
-    console.log(results);
-  } catch (err) {
-    console.error('error executing query:', err);
-  } finally {
-    client.end();
-  }
-};
+export async function tryy() {
+  const user = await prisma.users.findMany();
+  console.log(user);
+}
