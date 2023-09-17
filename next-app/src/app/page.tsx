@@ -32,8 +32,9 @@ export default function Home() {
     <>
       <Topbar />
       <main className="w-100">
+        <Recorder />
         <Grid />
-        <div className="flex flex-col items-center justify-center min-h-screen py-2">
+        {/* <div className="flex flex-col items-center justify-center min-h-screen py-2">
           <VideoRecorder />
           <AudioRecorder />
           <Dialog>
@@ -50,7 +51,7 @@ export default function Home() {
               </DialogHeader>
             </DialogContent>
           </Dialog>
-        </div>
+        </div> */}
       </main>
     </>
   );

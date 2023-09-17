@@ -2,15 +2,20 @@
 
 import React from "react";
 import { AudioRecorder } from "react-audio-voice-recorder";
+import axios from "axios"
 
 const Recorder = () => {
   const addAudioElement = async (blob) => {
     // This doesn't work - need to convert to an mp4!
     console.log(blob);
 
-    fetch("http://127.0.0.1:8000/api/media-file", {
-      method: "POST",
-      body: blob,
+    const formData = new FormData();
+    formData.append('file', blob, 'your_blob.webm');
+
+    axios.post("http://127.0.0.1:8000/api/audio", formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
     });
 
     // We can play the recorded audio back here:
@@ -29,7 +34,7 @@ const Recorder = () => {
         noiseSuppression: true,
         echoCancellation: true,
       }}
-        downloadOnSavePress={true}
+        downloadOnSavePress={false}
       downloadFileExtension="mp3"
     />
   );

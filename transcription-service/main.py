@@ -104,6 +104,10 @@ async def process_audio(file: UploadFile):
         transcriber = aai.Transcriber(config=config)
         transcript = transcriber.transcribe("out.mp3")
         os.remove("out.mp3")
+        
+        if not transcript.utterances:
+            return {"Summary": "Unavailable"}
+        
         for utterance in transcript.utterances:
             speaker = utterance.speaker
             text = utterance.text
@@ -113,13 +117,14 @@ async def process_audio(file: UploadFile):
         script_text = transcript.text
         if len(script_text) < 250: 
             script_text += "".join(" " for i in range(255-len(script_text)))
-
+        
         response = co.summarize(text=script_text, length='medium',
             format='paragraph',
             model='summarize-xlarge',
             additional_command='Seperate into Bullet Points',
             temperature=0.3,
         ).summary
+        print(response)
         return {"Summary": response}
 
     return {"Hello": file.filename}
