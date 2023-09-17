@@ -3,7 +3,11 @@ import { NextResponse } from 'next/server';
 import axios from 'axios';
 import fs from 'fs-extra';
 
-export async function GET() {
+export async function POST(request:Request) {
+
+  console.log('request.body', request.body);
+  console.log('request.files', request.files);
+  // const { url } = await request.body;
   // replace with your API token
   const YOUR_API_TOKEN = 'e0734713318f414583f133c62b9b4517';
 

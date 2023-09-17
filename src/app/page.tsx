@@ -5,7 +5,10 @@ import { prisma } from '../lib/cockroachDB';
 import { getUser, getUsers } from '../lib/actions/users.actions';
 import { useEffect, useState } from 'react';
 import Topbar from '@/components/shared/Topbar';
+import Grid from '@/components/shared/Grid';
 import Recorder from '@/components/recorder';
+import VideoRecorder from '@/components/VideoRecorder';
+import AudioRecorder from '@/components/AudioRecorder';
 
 interface User {
   id: number;
@@ -15,34 +18,18 @@ interface User {
 }
 
 export default function Home() {
-  const [users, setUsers] = useState<User[]>([]);
-  useEffect(() => {
-    async function fetchData() {
-      try {
-        const userArray = await getUsers();
-        setUsers(userArray);
-      } catch (error) {
-        console.error('Error fetching users:', error);
-      }
-    }
 
-    fetchData();
-  }, []);
   return (
-    <main className="">
+    <>
       <Topbar />
-      <div className="flex flex-col items-center justify-center min-h-screen py-2">
-        {users.map((user) => (
-          <UserCard
-            key={user.id}
-            id={user.id}
-            imageUrl={user.image_url}
-            name={user.name}
-            shortBio={user.short_bio}
-          />
-        ))}
-      </div>
-          <Recorder />
-    </main>
+      <main className="w-100">
+        <Grid />
+        <div className="flex flex-col items-center justify-center min-h-screen py-2">
+          
+          <VideoRecorder />
+          <AudioRecorder />
+        </div>
+      </main>
+    </>
   );
 }
