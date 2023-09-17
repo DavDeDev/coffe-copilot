@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 
 import { Storage } from '@google-cloud/storage';
-import { credentials } from '../../../../credentials';
+import { credentials } from '../../../../next-app/credentials';
 
 // Creates a client
 const storage = new Storage({
