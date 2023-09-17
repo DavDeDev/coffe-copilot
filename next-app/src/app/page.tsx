@@ -19,6 +19,7 @@ import {
   DialogTitle,
   DialogDescription,
 } from '@radix-ui/react-dialog';
+import Modal from '@/components/ui/modal';
 
 interface User {
   id: number;
@@ -52,6 +53,7 @@ export default function Home() {
             </DialogContent>
           </Dialog>
         </div> */}
+        <Modal />
       </main>
     </>
   );
