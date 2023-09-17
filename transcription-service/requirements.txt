@@ -1,5 +1,7 @@
 psycopg[binary]==3.1.10
 python-dotenv==1.0.0
-fastapi
-uvicorn[standard]
-cohere
+fastapi~=0.103.1
+uvicorn[standard]~=0.23.2
+cohere~=4.26.1
+httpx~=0.25.0
+assemblyai~=0.17.0

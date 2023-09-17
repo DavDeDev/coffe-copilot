@@ -19,7 +19,7 @@ def generate_conversation_summary(conversation):
     response = co.summarize(text=conversation, length='medium',
                             format='paragraph',
                             model='summarize-xlarge',
-                            additional_command='Seperate into Bullet Points',
+                            additional_command='Separate into Bullet Points',
                             temperature=0.3,
                             )
 
