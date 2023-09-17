@@ -9,15 +9,18 @@ datasource db {
 
 model conversations {
   conversation_id   String    @id @default(uuid())
+  user_id           String
   timestamp         DateTime? @default(now()) @db.Timestamp(6)
   text              String?
   summary           String?
   generated_prompts String?
+  user              users     @relation(fields: [user_id], references: [user_id])
 }
 
 model users {
-  user_id   String  @id @default(uuid())
-  name      String? @db.String(100)
-  image_url String? @db.String(255)
-  short_bio String?
+  user_id       String          @id @default(uuid())
+  name          String?         @db.String(100)
+  image_url     String?         @db.String(255)
+  short_bio     String?
+  conversations conversations[]
 }
