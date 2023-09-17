@@ -9,6 +9,7 @@ const Grid = () => {
     async function fetchData() {
       try {
         const userArray = await getUsers();
+        
         setUsers(userArray);
       } catch (error) {
         console.error('Error fetching users:', error);
@@ -22,8 +23,8 @@ const Grid = () => {
       {new Array(4).fill(0).map(i => {
         return users.map((user) => (
           <UserCard
-            key={user.id}
-            id={user.id}
+            key={user.user_id}
+            id={user.user_id}
             imageUrl={user.image_url}
             name={user.name}
             shortBio={user.short_bio}

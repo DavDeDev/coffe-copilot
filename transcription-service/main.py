@@ -31,6 +31,7 @@ async def root():
 
 @app.post("/api/audio")
 async def process_audio(file: UploadFile, conversation_id: str):
+    print("CONVERSATION", conversation_id)
     try:
         with open(os.path.join(tmp_file_dir, file.filename), 'wb') as disk_file:
             print(os.path.join(tmp_file_dir, file.filename))

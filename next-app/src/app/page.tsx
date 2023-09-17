@@ -31,27 +31,9 @@ interface User {
 export default function Home() {
   return (
     <>
-      <Topbar />
+      
       <main className="w-100">
         <Grid />
-        {/* <div className="flex flex-col items-center justify-center min-h-screen py-2">
-          <VideoRecorder />
-          <AudioRecorder />
-          <Dialog>
-            <DialogTrigger>
-              <StartButton />
-            </DialogTrigger>
-            <DialogContent>
-              <DialogHeader>
-                <DialogTitle>Are you sure absolutely sure?</DialogTitle>
-                <DialogDescription>
-                  This action cannot be undone. This will permanently delete
-                  your account and remove your data from our servers.
-                </DialogDescription>
-              </DialogHeader>
-            </DialogContent>
-          </Dialog>
-        </div> */}
         <Modal />
       </main>
     </>
