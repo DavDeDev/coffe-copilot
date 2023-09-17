@@ -21,7 +21,7 @@ const Modal = () => {
           Start Conversation
         </Button>
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[425px] fixed top-1/2 left-1/2">
+      <DialogContent className="sm:max-w-[425px] fixed top-1/2 left-1/2 bg-black" >
         <DialogHeader>
           <DialogTitle>Edit profile</DialogTitle>
           <DialogDescription>
@@ -37,7 +37,7 @@ const Modal = () => {
           </div>
           <div className="grid grid-cols-4 items-center gap-4">
             <Label htmlFor="username" className="text-right">
-              Notes
+              Short Bio (optional)
             </Label>
             <Input id="username" value="@peduarte" className="col-span-3" />
           </div>
