@@ -1,5 +1,4 @@
 import { getUsers } from '@/lib/actions/users.actions';
-import { User } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import UserCard from '../ui/user-card';
 import React from 'react';
@@ -19,16 +18,19 @@ const Grid = () => {
     fetchData();
   }, []);
   return (
-    <div className="grid grid-cols-1 md:grid-cols-5 m-5 gap-7 ">
-      {users.map((user) => (
-        <UserCard
-          key={user.id}
-          id={user.id}
-          imageUrl={user.image_url}
-          name={user.name}
-          shortBio={user.short_bio}
-        />
-      ))}
+    <div className="grid grid-cols-1 md:grid-cols-5 m-5 gap-7">
+      {new Array(4).fill(0).map(i => {
+        return users.map((user) => (
+          <UserCard
+            key={user.id}
+            id={user.id}
+            imageUrl={user.image_url}
+            name={user.name}
+            shortBio={user.short_bio}
+          />
+        ))
+      })}
+      
     </div>
   );
 };
