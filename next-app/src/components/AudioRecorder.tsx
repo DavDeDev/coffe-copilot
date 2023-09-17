@@ -1,7 +1,6 @@
 
 import { useState, useRef } from 'react';
 import { Button } from './ui/button';
-import { uploadFile } from '@/lib/gcs';
 
 const mimeType = 'audio/ogg';
 

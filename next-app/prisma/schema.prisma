@@ -8,15 +8,15 @@ datasource db {
 }
 
 model conversations {
-  conversation_id String    @id @default(uuid())
-  timestamp       DateTime? @default(now()) @db.Timestamp(6)
-  text String?
-  summary   String?
+  conversation_id   String    @id @default(uuid())
+  timestamp         DateTime? @default(now()) @db.Timestamp(6)
+  text              String?
+  summary           String?
   generated_prompts String?
 }
 
 model users {
-  user_id   String    @id @default(uuid())
+  user_id   String  @id @default(uuid())
   name      String? @db.String(100)
   image_url String? @db.String(255)
   short_bio String?

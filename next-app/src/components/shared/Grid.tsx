@@ -2,6 +2,7 @@ import { getUsers } from '@/lib/actions/users.actions';
 import { User } from 'lucide-react';
 import { useState, useEffect } from 'react';
 import UserCard from '../ui/user-card';
+import React from 'react';
 
 const Grid = () => {
   const [users, setUsers] = useState<User[]>([]);
@@ -18,7 +19,7 @@ const Grid = () => {
     fetchData();
   }, []);
   return (
-    <div className="grid grid-cols-1 md:grid-cols-5 m-5 gap-7">
+    <div className="grid grid-cols-1 md:grid-cols-5 m-5 gap-7 ">
       {users.map((user) => (
         <UserCard
           key={user.id}
